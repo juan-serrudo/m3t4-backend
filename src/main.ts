@@ -8,8 +8,8 @@ import { bold } from 'chalk';
 import { json, urlencoded } from 'express';
 import * as compression from 'compression';
 
-import { ResponseFormatInterceptor } from './interceptors/response-format.interceptor';
-import { configSwagger } from './helpers/swagger.helper';
+import { ResponseFormatInterceptor } from './shared/interceptors/response-format.interceptor';
+import { configSwagger } from './shared/helpers/swagger.helper';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);

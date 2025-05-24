@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import configuration from './configurations/configuration';
+import configuration from './shared/configurations/configuration';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { databaseProviders } from './providers/database.providers';
+import { databaseProviders } from './shared/providers/database.providers';
 
 @Module({
   imports: [
