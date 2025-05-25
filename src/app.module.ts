@@ -6,6 +6,8 @@ import { databaseProviders } from './shared/providers/database.providers';
 import { AppController } from './shared/app.controller';
 import { AppService } from './shared/app.service';
 
+import { InventoryModule } from './inventory/inventory.module';
+
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -13,6 +15,7 @@ import { AppService } from './shared/app.service';
       expandVariables: true,
       isGlobal: true
     }),
+    InventoryModule,
   ],
   controllers: [
     AppController,
