@@ -5,7 +5,7 @@ import { TokenDecorator } from 'src/shared/decorators/jwt.decorator';
 import { ResponseDTO } from 'src/shared/dto/response.dto';
 
 import { CreateInventoryDto, UpdateInventoryDto } from '../dtos/inventory.dto';
-import { InventoryService } from '../services/inventory.service';
+import { InventoryService } from '../../domain/events/inventory.service';
 
 @ApiTags('INVENTARIO')
 @Controller('inventory')
