@@ -20,4 +20,7 @@ export class Inventorys {
 
   @Column({ type: 'varchar', length: 100 })
   name: string;
+
+  @Column({ type: 'varchar', length: 200 })
+  description: string;
 }
