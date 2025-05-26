@@ -1,16 +1,16 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, Version } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Version } from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 
-import { CreateUserDto, LoginDto, UpdateUserDto } from './application/dtos/user.dto';
-import { ResponseDTO } from 'src/shared/dto/response.dto';
 import { TokenDecorator } from 'src/shared/decorators/jwt.decorator';
+import { ResponseDTO } from 'src/shared/dto/response.dto';
 
-import { SecurityService } from './security.service';
+import { CreateInventoryDto, UpdateInventoryDto } from '../dtos/inventory.dto';
+import { InventoryService } from '../services/inventory.service';
 
-@ApiTags('SEGURIDAD')
-@Controller('security')
-export class SecurityController {
-  constructor(private readonly securityService: SecurityService) {}
+@ApiTags('INVENTARIO')
+@Controller('inventory')
+export class InventoryController {
+  constructor(private readonly inventoryService: InventoryService) {}
 
   @Version('1')
   @Get('/')
@@ -19,12 +19,12 @@ export class SecurityController {
   })
   @ApiBearerAuth()
   async findAll(
-    @TokenDecorator() tokenValid: ResponseDTO
+      @TokenDecorator() tokenValid: ResponseDTO,
   ): Promise<ResponseDTO> {
     let response = tokenValid;
 
     if ( ! response.error) {
-      response = await this.securityService.findAll();
+      response = await this.inventoryService.findAll();
     }
 
     return response;
@@ -38,19 +38,19 @@ export class SecurityController {
   @ApiBearerAuth()
   async save(
     @TokenDecorator() tokenValid: ResponseDTO,
-    @Body() value: CreateUserDto
+    @Body() value: CreateInventoryDto
   ): Promise<ResponseDTO> {
     let response = tokenValid;
 
     if ( ! response.error) {
-      response = await this.securityService.save(value);
+      response = await this.inventoryService.save(value);
     }
 
     return response;
   }
 
   @Version('1')
-  @Patch('/:id')
+  @Put('/:id')
   @ApiOperation({
     summary: 'Actualizar la base de datos.',
   })
@@ -58,12 +58,12 @@ export class SecurityController {
   async update(
     @TokenDecorator() tokenValid: ResponseDTO,
     @Param('id') id: number,
-    @Body() value: UpdateUserDto
+    @Body() value: UpdateInventoryDto
   ): Promise<ResponseDTO> {
     let response = tokenValid;
 
     if ( ! response.error) {
-      response = await this.securityService.update(id, value);
+      response = await this.inventoryService.update(id, value);
     }
 
     return response;
@@ -82,18 +82,9 @@ export class SecurityController {
     let response = tokenValid;
 
     if ( ! response.error) {
-      response = await this.securityService.delete(id);
+      response = await this.inventoryService.delete(id);
     }
 
     return response;
-  }
-
-  @Version('1')
-  @Post('/login')
-  @ApiOperation({
-    summary: 'Obtiene el token JWT.',
-  })
-  async login(@Body() value: LoginDto): Promise<ResponseDTO> {
-    return this.securityService.login(value);
   }
 }

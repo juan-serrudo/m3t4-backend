@@ -2,10 +2,10 @@ import { Inject, Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import * as bcrypt from 'bcrypt';
 
-import { Users } from './domain/entities/users.entity';
+import { Users } from '../../domain/entities/users.entity';
 import { ResponseDTO } from 'src/shared/dto/response.dto';
 import { signJWTHelperV1 } from 'src/shared/helpers/jwt.helper';
-import { CreateUserDto, LoginDto, UpdateUserDto } from './application/dtos/user.dto';
+import { CreateUserDto, LoginDto, UpdateUserDto } from '../dtos/user.dto';
 
 @Injectable()
 export class SecurityService {
