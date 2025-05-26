@@ -1,10 +1,11 @@
-import { Controller, Get, Version } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Version } from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 
 import { TokenDecorator } from 'src/shared/decorators/jwt.decorator';
 import { ResponseDTO } from 'src/shared/dto/response.dto';
 
 import { InventoryService } from './inventory.service';
+import { CreateInventoryDto, UpdateInventoryDto } from './application/dtos/inventory.dto';
 
 @ApiTags('INVENTARIO')
 @Controller('inventory')
@@ -24,6 +25,64 @@ export class InventoryController {
 
     if ( ! response.error) {
       response = await this.inventoryService.findAll();
+    }
+
+    return response;
+  }
+
+  @Version('1')
+  @Post('/')
+  @ApiOperation({
+    summary: 'Registrar en la base de datos.',
+  })
+  @ApiBearerAuth()
+  async save(
+    @TokenDecorator() tokenValid: ResponseDTO,
+    @Body() value: CreateInventoryDto
+  ): Promise<ResponseDTO> {
+    let response = tokenValid;
+
+    if ( ! response.error) {
+      response = await this.inventoryService.save(value);
+    }
+
+    return response;
+  }
+
+  @Version('1')
+  @Put('/:id')
+  @ApiOperation({
+    summary: 'Actualizar la base de datos.',
+  })
+  @ApiBearerAuth()
+  async update(
+    @TokenDecorator() tokenValid: ResponseDTO,
+    @Param('id') id: number,
+    @Body() value: UpdateInventoryDto
+  ): Promise<ResponseDTO> {
+    let response = tokenValid;
+
+    if ( ! response.error) {
+      response = await this.inventoryService.update(id, value);
+    }
+
+    return response;
+  }
+
+  @Version('1')
+  @Delete('/:id')
+  @ApiOperation({
+    summary: 'Eliminar de la base de datos.',
+  })
+  @ApiBearerAuth()
+  async delete(
+    @TokenDecorator() tokenValid: ResponseDTO,
+    @Param('id') id: number
+  ): Promise<ResponseDTO> {
+    let response = tokenValid;
+
+    if ( ! response.error) {
+      response = await this.inventoryService.delete(id);
     }
 
     return response;
