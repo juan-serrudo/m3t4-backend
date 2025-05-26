@@ -6,6 +6,7 @@ import { AppController } from './shared/app.controller';
 import { AppService } from './shared/app.service';
 
 import { InventoryModule } from './inventory/inventory.module';
+import { SecurityModule } from './security/security.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { InventoryModule } from './inventory/inventory.module';
       isGlobal: true
     }),
     InventoryModule,
+    SecurityModule,
   ],
   controllers: [
     AppController,

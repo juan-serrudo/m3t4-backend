@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
 
+import { databaseProviders } from 'src/shared/providers/database.providers';
+
 import { InventoryController } from './inventory.controller';
 import { InventoryService } from './inventory.service';
 import { inventorysProviders } from './infrastructure/persistence/inventory.providers';
-import { databaseProviders } from 'src/shared/providers/database.providers';
 
 @Module({
   controllers: [
