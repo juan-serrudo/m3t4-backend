@@ -1,5 +1,5 @@
 import { DataSource } from 'typeorm';
-import { Inventorys } from 'src/inventory/domain/entities/inventorys.entity';
+import { Inventorys } from 'src/inventory/infrastructure/persistence/inventorys.entity';
 
 export const inventorysProviders = [
   {
