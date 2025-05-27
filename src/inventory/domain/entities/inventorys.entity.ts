@@ -23,4 +23,10 @@ export class Inventorys {
 
   @Column({ type: 'varchar', length: 200 })
   description: string;
+
+  @Column({ type: 'varchar', length: 100 })
+  marca: string;
+
+  @Column({ type: 'varchar', length: 100 })
+  modelo: string;
 }

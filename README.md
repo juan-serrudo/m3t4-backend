@@ -19,16 +19,14 @@ Este sistema permite:
 
 ## 🧱 Tecnologías utilizadas
 
-- **NestJS** (modular architecture, CQRS, DDD)
+- **TypeScript** (modular architecture, CQRS, DDD)
 - **TypeORM**
 - **SQLite**
-- **Prometheus**, **Grafana**, **Kibana**, **Elasticsearch**
-- **Docker / Kubernetes**
 - **JWT**
 
 ---
 
-## 📁 Módulos principales
+## 📁 Subdominios
 
 - `inventory/`: Detección y registro de activos
 - `monitoring/`: Recolección de métricas y alertas
