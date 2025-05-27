@@ -1,7 +1,7 @@
 
 # INFRA-TRACK MP
 
-**INFRA-TRACK MP** es un sistema modular desarrollado con **NestJS**, diseñado para el **Ministerio Público**, que permite la automatización y centralización de procesos de infraestructura tecnológica.
+**INFRA-TRACK MP** tiene como objetivo sistematizar el registro de activos tecnológicos y monitorear infraestructura crítica.
 
 ---
 

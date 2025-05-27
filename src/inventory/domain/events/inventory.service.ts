@@ -3,7 +3,8 @@ import { Repository } from 'typeorm';
 import { ResponseDTO } from 'src/shared/dto/response.dto';
 
 import { Inventorys } from 'src/inventory/domain/entities/inventorys.entity';
-import { CreateInventoryDto, UpdateInventoryDto } from '../../application/dtos/inventory.dto';
+import { CreateInventoryDto } from '../../application/dtos/inventory.dto';
+import { UpdateInventoryDto } from 'src/inventory/application/dtos/inventory-update.dto';
 
 @Injectable()
 export class InventoryService {

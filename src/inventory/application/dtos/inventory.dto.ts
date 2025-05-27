@@ -32,5 +32,3 @@ export class CreateInventoryDto {
   })
   description: string;
 }
-
-export class UpdateInventoryDto extends CreateInventoryDto {}

@@ -4,8 +4,9 @@ import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { TokenDecorator } from 'src/shared/decorators/jwt.decorator';
 import { ResponseDTO } from 'src/shared/dto/response.dto';
 
-import { CreateInventoryDto, UpdateInventoryDto } from '../dtos/inventory.dto';
+import { CreateInventoryDto } from '../dtos/inventory.dto';
 import { InventoryService } from '../../domain/events/inventory.service';
+import { UpdateInventoryDto } from '../dtos/inventory-update.dto';
 
 @ApiTags('INVENTARIO')
 @Controller('inventory')
